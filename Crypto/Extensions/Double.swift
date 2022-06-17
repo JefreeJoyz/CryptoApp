@@ -34,6 +34,10 @@ extension Double {
         return currencyFormatter2.string(from: number) ?? "$0.00"
     }
     
+    func dsdff () {
+        
+    }
+    
     
     /// Конвертируем дабл в Валюту с 2-6 знаками
     /// ```
