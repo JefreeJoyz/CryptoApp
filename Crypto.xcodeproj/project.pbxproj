@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BCABE127286068D90071BC48 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCABE126286068D90071BC48 /* HomeViewModel.swift */; };
 		BCCA6CE9285B0D4A0033D37C /* CryptoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA6CE8285B0D4A0033D37C /* CryptoApp.swift */; };
 		BCCA6CEB285B0D4A0033D37C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA6CEA285B0D4A0033D37C /* ContentView.swift */; };
 		BCCA6CF0285B0D4E0033D37C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCCA6CEF285B0D4E0033D37C /* Preview Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BCABE126286068D90071BC48 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		BCCA6CE5285B0D4A0033D37C /* Crypto tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crypto tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCA6CE8285B0D4A0033D37C /* CryptoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoApp.swift; sourceTree = "<group>"; };
 		BCCA6CEA285B0D4A0033D37C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		BCCA6CFE285B31940033D37C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				BCABE126286068D90071BC48 /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCF0C360285CB41000DD4A6E /* CoinRowView.swift in Sources */,
+				BCABE127286068D90071BC48 /* HomeViewModel.swift in Sources */,
 				BCCA6CEB285B0D4A0033D37C /* ContentView.swift in Sources */,
 				BCF0C355285B320900DD4A6E /* HomeView.swift in Sources */,
 				BCCA6CE9285B0D4A0033D37C /* CryptoApp.swift in Sources */,
