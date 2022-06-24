@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject private var vm: HomeViewModel
     
-    // делаем приватной, что бы никто случайно не постучался к ней из других мест большого проекта
     @State private var showPortfolio: Bool = false
     
     var body: some View {
