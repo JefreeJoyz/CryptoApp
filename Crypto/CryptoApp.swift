@@ -15,7 +15,7 @@ struct CryptoApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView()
+                HomeView()
                     .navigationBarHidden(true)
             }
             .environmentObject(vm) // Все "дети" NavigationView теперь имеют доступ к HomeViewModel
