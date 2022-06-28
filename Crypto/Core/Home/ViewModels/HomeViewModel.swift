@@ -18,19 +18,30 @@ class HomeViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init () {
-//        // Симуляция скачивания с инета
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-//            self.allCoins.append(DeveloperPreview.instance.coin)
-//            self.portfolioCoins.append(DeveloperPreview.instance.coin)
-//        }
         addSubscribers ()
     }
     
     func addSubscribers () {
-        dataService.$allCoins
+        
+        $searchText
+            .combineLatest(dataService.$allCoins) // теперь мы подписаны на $searchText и $allCoins
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .map(filterCoins)
             .sink { [weak self] returnedCoins in
                 self?.allCoins = returnedCoins
             }
             .store(in: &cancellables)
+    }
+    
+    private func filterCoins (text: String, coins: [CoinModel]) -> [CoinModel] {
+        guard !text.isEmpty else {
+            return coins
+        }
+        let lowercasedText = text.lowercased()
+        return coins.filter { coin -> Bool in
+            return coin.name.lowercased().contains(lowercasedText) ||
+            coin.symbol.lowercased().contains(lowercasedText) ||
+            coin.id.lowercased().contains(lowercasedText)
+        }
     }
 }
