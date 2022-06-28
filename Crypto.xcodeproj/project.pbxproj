@@ -12,6 +12,8 @@
 		BC7ABAE9286AEFFE00A3A23C /* StatisticModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7ABAE8286AEFFE00A3A23C /* StatisticModel.swift */; };
 		BC7ABAEB286AF18000A3A23C /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7ABAEA286AF18000A3A23C /* StatisticView.swift */; };
 		BC7ABAED286AF56400A3A23C /* HomeStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7ABAEC286AF56400A3A23C /* HomeStatsView.swift */; };
+		BCAA8819286AFDDB00B07DF9 /* MarketDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAA8818286AFDDB00B07DF9 /* MarketDataModel.swift */; };
+		BCAA881B286B0A2000B07DF9 /* MarketDatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAA881A286B0A1F00B07DF9 /* MarketDatService.swift */; };
 		BCABE127286068D90071BC48 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCABE126286068D90071BC48 /* HomeViewModel.swift */; };
 		BCB845AB2861C01E001B6ACA /* CoinDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB845AA2861C01E001B6ACA /* CoinDataService.swift */; };
 		BCB845AE2863004F001B6ACA /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB845AD2863004F001B6ACA /* NetworkingManager.swift */; };
@@ -39,6 +41,8 @@
 		BC7ABAE8286AEFFE00A3A23C /* StatisticModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticModel.swift; sourceTree = "<group>"; };
 		BC7ABAEA286AF18000A3A23C /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
 		BC7ABAEC286AF56400A3A23C /* HomeStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStatsView.swift; sourceTree = "<group>"; };
+		BCAA8818286AFDDB00B07DF9 /* MarketDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDataModel.swift; sourceTree = "<group>"; };
+		BCAA881A286B0A1F00B07DF9 /* MarketDatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDatService.swift; sourceTree = "<group>"; };
 		BCABE126286068D90071BC48 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		BCB845AA2861C01E001B6ACA /* CoinDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDataService.swift; sourceTree = "<group>"; };
 		BCB845AD2863004F001B6ACA /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 			children = (
 				BCB845AA2861C01E001B6ACA /* CoinDataService.swift */,
 				BCB845B2286454E7001B6ACA /* CoinImageService.swift */,
+				BCAA881A286B0A1F00B07DF9 /* MarketDatService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 			children = (
 				BCF0C35D285C75D500DD4A6E /* CoinModel.swift */,
 				BC7ABAE8286AEFFE00A3A23C /* StatisticModel.swift */,
+				BCAA8818286AFDDB00B07DF9 /* MarketDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -291,6 +297,7 @@
 				BCABE127286068D90071BC48 /* HomeViewModel.swift in Sources */,
 				BCCA6CEB285B0D4A0033D37C /* ContentView.swift in Sources */,
 				BCB845B72865F64A001B6ACA /* LocalFileManager.swift in Sources */,
+				BCAA8819286AFDDB00B07DF9 /* MarketDataModel.swift in Sources */,
 				BCF0C355285B320900DD4A6E /* HomeView.swift in Sources */,
 				BC7ABAEB286AF18000A3A23C /* StatisticView.swift in Sources */,
 				BCB845B1286310ED001B6ACA /* CoinImageView.swift in Sources */,
@@ -299,6 +306,7 @@
 				BCF0C359285B340000DD4A6E /* CircleButtonView.swift in Sources */,
 				BCCA6CFA285B2C140033D37C /* Color.swift in Sources */,
 				BC7ABAE52869FB7900A3A23C /* SearchBarView.swift in Sources */,
+				BCAA881B286B0A2000B07DF9 /* MarketDatService.swift in Sources */,
 				BCB845AE2863004F001B6ACA /* NetworkingManager.swift in Sources */,
 				BC7ABAED286AF56400A3A23C /* HomeStatsView.swift in Sources */,
 				BCF0C35B285B806200DD4A6E /* CircleButtonAnimationView.swift in Sources */,
