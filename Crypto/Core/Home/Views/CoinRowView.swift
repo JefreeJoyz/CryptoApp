@@ -22,8 +22,10 @@ struct CoinRowView: View {
             rightColumn
         }
         .font(.subheadline)
-        // Делаем для того, что бы можно было кликнуть по всей строке, а не только по значениям из leftColumn и rightColumn. С помощью этого бекграунда мы кликаем "по цвету" и проваливаемся внутрь строки
-        // Альтернатива - .contentShape
+        /* Делаем для того, что бы можно было кликнуть по всей строке, а не только по значениям из leftColumn и rightColumn. С помощью этого бекграунда мы кликаем "по цвету" и проваливаемся внутрь строки
+         Альтернатива - .contentShape
+         https://www.hackingwithswift.com/quick-start/swiftui/how-to-control-the-tappable-area-of-a-view-using-contentshape
+         */
         .background(
             Color.theme.background.opacity(0.001)
         )

@@ -22,17 +22,17 @@ struct DetailLoadingView: View {
 }
 
 struct DetailView: View {
-    
-    let coin: CoinModel
+    // мы не можем иниировать DetailViewModel, т.к. неоткуда взять аргумент coin. Поэтому мы делаем это через init
+    @StateObject var vm: DetailViewModel
     
     init(coin: CoinModel) {
-        self.coin = coin
+        _vm = StateObject(wrappedValue: DetailViewModel(coin: coin))
         print("Initializing detail view \(coin.name)")
     }
     
     var body: some View {
         ZStack {
-            Text(coin.name)
+            Text("hello")
         }
     }
     
