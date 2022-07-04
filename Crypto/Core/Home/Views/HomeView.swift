@@ -12,6 +12,8 @@ struct HomeView: View {
     
     @State private var showPortfolio: Bool = false // Анимация вправо, где указано наше портфолио
     @State private var showPortfolioView: Bool = false // Новый экран по добавлению портфолио
+    @State private var selectedCoin: CoinModel? = nil // для передачи коина в навигейшнлинк
+    @State private var showDetailView: Bool = false
     
     var body: some View {
         ZStack {
@@ -41,6 +43,14 @@ struct HomeView: View {
                 Spacer(minLength: 0)
             }
         }
+        // Делаем work-around, ибо если сделать все стандартно, то все вьюхи будут инициализироваться прямо с home-page и вся логика внутри будет прогружаться и замедлять приложение
+        .background(
+            NavigationLink(isActive: $showDetailView, destination: {
+                DetailLoadingView(coin: $selectedCoin)
+            }, label: {
+                EmptyView()
+            })
+        )
     }
 }
 
@@ -91,9 +101,17 @@ extension HomeView {
             ForEach(vm.allCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColums: false)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                    .onTapGesture {
+                        segue(coin: coin)
+                    }
             }
         }
         .listStyle(.plain)
+    }
+    
+    private func segue(coin: CoinModel) {
+        selectedCoin = coin
+        showDetailView.toggle()
     }
     
     private var portfolioCoinsList: some View {
@@ -101,6 +119,9 @@ extension HomeView {
             ForEach(vm.portfolioCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColums: true)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                    .onTapGesture {
+                        segue(coin: coin)
+                    }
             }
         }
         .listStyle(.plain)

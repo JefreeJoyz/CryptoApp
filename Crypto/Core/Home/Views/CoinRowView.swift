@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct CoinRowView: View {
-    
-    // comment2
-    
+        
     let coin: CoinModel
     let showHoldingsColums: Bool
     
@@ -24,6 +22,11 @@ struct CoinRowView: View {
             rightColumn
         }
         .font(.subheadline)
+        // Делаем для того, что бы можно было кликнуть по всей строке, а не только по значениям из leftColumn и rightColumn. С помощью этого бекграунда мы кликаем "по цвету" и проваливаемся внутрь строки
+        // Альтернатива - .contentShape
+        .background(
+            Color.theme.background.opacity(0.001)
+        )
     }
 }
 
