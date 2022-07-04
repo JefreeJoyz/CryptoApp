@@ -11,16 +11,20 @@ import Combine
 class HomeViewModel: ObservableObject {
     
     @Published var statistics: [StatisticModel] = []
-    
     @Published var allCoins: [CoinModel] = []
     @Published var portfolioCoins: [CoinModel] = []
     @Published var searchText: String = ""
     @Published var isLoading: Bool = false
+    @Published var sortOption: SortOption = .holdings
     
     private let coinDataService = CoinDataService()
     private let marketDataService = MarketDatService()
     private let portfolioDataService = PortfolioDataService()
     private var cancellables = Set<AnyCancellable>()
+    
+    enum SortOption {
+        case rank, rankReversed, holdings, holdingsReversed, price, pricedReversed
+    }
     
     init () {
         addSubscribers ()
@@ -29,9 +33,9 @@ class HomeViewModel: ObservableObject {
     func addSubscribers () {
         
         $searchText
-            .combineLatest(coinDataService.$allCoins) // теперь мы подписаны на $searchText и $allCoins
+            .combineLatest(coinDataService.$allCoins, $sortOption) // теперь мы подписаны на $searchText и $allCoins
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
-            .map(filterCoins)
+            .map(filterAndSortCoins)
             .sink { [weak self] returnedCoins in
                 self?.allCoins = returnedCoins
             }
@@ -43,7 +47,8 @@ class HomeViewModel: ObservableObject {
             .combineLatest(portfolioDataService.$savedEntities)
             .map(mapAllCoinsToPortfolioCoins)
             .sink { [weak self] returnedCoins in
-                self?.portfolioCoins = returnedCoins
+                guard let self = self else { return }
+                self.portfolioCoins = self.sortPortfolioCoinsIfNeeded(coins: returnedCoins)
             }
             .store(in: &cancellables)
         
@@ -68,6 +73,12 @@ class HomeViewModel: ObservableObject {
         HapticManager.notification(type: .success)
     }
     
+    private func filterAndSortCoins (text: String, coins: [CoinModel], sort: SortOption) -> [CoinModel] {
+        var updatedCoins = filterCoins(text: text, coins: coins)
+        sortCoins(sort: sort, coins: &updatedCoins)
+        return updatedCoins
+    }
+    
     private func filterCoins (text: String, coins: [CoinModel]) -> [CoinModel] {
         guard !text.isEmpty else {
             return coins
@@ -77,6 +88,46 @@ class HomeViewModel: ObservableObject {
             return coin.name.lowercased().contains(lowercasedText) ||
             coin.symbol.lowercased().contains(lowercasedText) ||
             coin.id.lowercased().contains(lowercasedText)
+        }
+    }
+    
+    private func sortCoins(sort: SortOption, coins: inout [CoinModel]) { // inout означает, что у нас на вход [CoinModel] и на выход [CoinModel], т.е. мы убрали ->[CoinModel]. И убрали return перед coins.sorted + coins.sorted заменили на coins.sort
+        switch sort {
+        case .rank, .holdings:
+             coins.sort { coin1, coin2 in
+                return coin1.rank < coin2.rank
+                /*
+                 Тоже самое, но короче
+                 return coins.sorted(by: {$0.rank < $1.rank})
+                 */
+            }
+        case .rankReversed, .holdingsReversed:
+             coins.sort { coin1, coin2 in
+                return coin1.rank > coin2.rank
+            }
+        case .price:
+             coins.sort { coin1, coin2 in
+                return coin1.currentPrice > coin2.currentPrice
+            }
+        case .pricedReversed:
+             coins.sort { coin1, coin2 in
+                return coin1.currentPrice < coin2.currentPrice
+            }
+        }
+    }
+    
+    private func sortPortfolioCoinsIfNeeded (coins: [CoinModel]) -> [CoinModel] {
+        switch sortOption {
+        case .holdings:
+            return coins.sorted { coin1, coin2 in
+                coin1.currentHoldingValue > coin2.currentHoldingValue
+            }
+        case .holdingsReversed:
+            return coins.sorted { coin1, coin2 in
+                coin1.currentHoldingValue < coin2.currentHoldingValue
+            }
+        default:
+            return coins
         }
     }
     
