@@ -36,33 +36,49 @@ struct DetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 20) {
-                Text("123")
-                    .frame(height: 130)
-                overView
-                Divider()
-                overViewGrid
-                
-                additionalTitle
-                Divider()
-                additionalViewGrid
+                VStack {
+                    ChartView(coin: vm.coin)
+                        .padding(.vertical)
+                    overViewTitle
+                    Divider()
+                    overViewGrid
+                    
+                    additionalTitle
+                    Divider()
+                    additionalViewGrid
             }
             .padding()
         }
         .navigationTitle(vm.coin.name)
-    }
-    
-    struct DetailView_Previews: PreviewProvider {
-        static var previews: some View {
-            NavigationView {
-                DetailView(coin: dev.coin)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                navigationBarTrailingitems
             }
         }
     }
 }
 
+struct DetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            DetailView(coin: dev.coin)
+        }
+    }
+}
+
 extension DetailView {
-    private var overView: some View {
+    
+    private var navigationBarTrailingitems: some View {
+        HStack {
+            Text(vm.coin.symbol.uppercased())
+                .font(.headline)
+            .foregroundColor(Color.theme.secondaryText)
+            CoinImageView(coin: vm.coin)
+                .frame(width: 25, height: 25)
+        }
+    }
+    
+    private var overViewTitle: some View {
         Text("Overview")
             .font(.title)
             .bold()
