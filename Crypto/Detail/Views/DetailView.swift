@@ -24,6 +24,7 @@ struct DetailLoadingView: View {
 struct DetailView: View {
     // мы не можем иниировать DetailViewModel, т.к. неоткуда взять аргумент coin. Поэтому мы делаем это через init
     @StateObject private var vm: DetailViewModel
+    @State private var showFullDescription: Bool = false
     private let columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -41,11 +42,12 @@ struct DetailView: View {
                         .padding(.vertical)
                     overViewTitle
                     Divider()
+                    descriptionSection
                     overViewGrid
-                    
                     additionalTitle
                     Divider()
                     additionalViewGrid
+                    websiteSection
             }
             .padding()
         }
@@ -114,5 +116,49 @@ extension DetailView {
                 StatisticView(stat: stat)
             }
         }
+    }
+    
+    private var descriptionSection: some View {
+        ZStack {
+            if let coinDescription = vm.coinDescription,
+               !coinDescription.isEmpty {
+                VStack (alignment: .leading) {
+                    Text(coinDescription)
+                        .lineLimit(showFullDescription ? nil : 3)
+                        .font(.callout)
+                        .foregroundColor(Color.theme.secondaryText)
+                    Button {
+                        withAnimation(.easeInOut) {
+                            showFullDescription.toggle()
+                        }
+                    } label: {
+                        Text(showFullDescription ? "Less" : "Read more")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .padding(.vertical, 4)
+                    }
+                    .tint(.blue)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+    }
+    
+    private var websiteSection: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            if let websiteString = vm.websiteURL,
+               let url = URL(string: websiteString) {
+                Link("website", destination: url)
+            }
+            
+            if let redditString = vm.redditURL,
+               let url = URL(string: redditString) {
+                Link("reddit", destination: url)
+            }
+            
+        }
+        .tint(.blue)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .font(.headline)
     }
 }
