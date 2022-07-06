@@ -14,6 +14,7 @@ struct HomeView: View {
     @State private var showPortfolioView: Bool = false // Новый экран по добавлению портфолио
     @State private var selectedCoin: CoinModel? = nil // для передачи коина в навигейшнлинк
     @State private var showDetailView: Bool = false
+    @State private var showSettings: Bool = false
     
     var body: some View {
         ZStack {
@@ -41,6 +42,9 @@ struct HomeView: View {
                     .transition(.move(edge: .trailing))
                 }
                 Spacer(minLength: 0)
+            }
+            .sheet(isPresented: $showSettings) {
+                SettingsView()
             }
         }
         // Делаем work-around, ибо если сделать все стандартно, то все вьюхи будут инициализироваться прямо с home-page и вся логика внутри будет прогружаться и замедлять приложение
@@ -73,6 +77,8 @@ extension HomeView {
                 .onTapGesture {
                     if showPortfolio {
                         showPortfolioView.toggle()
+                    } else {
+                        showSettings.toggle()
                     }
                 }
                 .background(
