@@ -11,6 +11,7 @@ import SwiftUI
 struct CryptoApp: App {
     
     @StateObject private var vm = HomeViewModel ()
+    @State private var showLaunchView: Bool = true
     
     // Меняем цвет текста в навигейшн баре 
     init () {
@@ -29,11 +30,22 @@ struct CryptoApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                HomeView()
-                    .navigationBarHidden(true)
+            
+            ZStack {
+                NavigationView {
+                    HomeView()
+                        .navigationBarHidden(true)
+                }
+                .environmentObject(vm) // Все "дети" NavigationView теперь имеют доступ к HomeViewModel
+                
+                ZStack {
+                    if showLaunchView {
+                        LaunchView(showLaunchView: $showLaunchView)
+                            .transition(.move(edge: .leading))
+                    }
+                }
+                .zIndex(2.0)
             }
-            .environmentObject(vm) // Все "дети" NavigationView теперь имеют доступ к HomeViewModel
         }
     }
 }
