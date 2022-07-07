@@ -26,9 +26,10 @@ class NetworkingManager {
        //let temp = - что бы посмотреть, какой тип надо вернуть, присваиваем переменной URLSession и option+click по переменной
         // после этого - добавляем .eraseToAnyPublisher() и копируем из ошибки требуемый возвращаемый тип
         return URLSession.shared.dataTaskPublisher(for: url)
-            .subscribe(on: DispatchQueue.global(qos: .default))
+//            .subscribe(on: DispatchQueue.global(qos: .default))  -- закомменчено, ибо процесс идет в беграунде по дефолту
             .tryMap({ try handleUrlResponse(output: $0, url: url) })
-            .receive(on: DispatchQueue.main)
+            //.receive(on: DispatchQueue.main) -- закомменчено, ибо эта функция возвращала в мейн тред, а в других (использующих ее) потом был декодинг джейсон даты. Поэтому здесь мы убрали мейн тред, а в вызывающих ее функциях после (!) декодинга - указали мейн тред
+            .retry(3) // если handleUrlResponse зайфейлиться - будем пытаться еще раз (до 3х раз)
             .eraseToAnyPublisher()
     }
     

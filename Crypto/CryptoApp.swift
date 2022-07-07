@@ -37,6 +37,7 @@ struct CryptoApp: App {
                         .navigationBarHidden(true)
                 }
                 .environmentObject(vm) // Все "дети" NavigationView теперь имеют доступ к HomeViewModel
+                .navigationViewStyle(.stack)
                 
                 ZStack {
                     if showLaunchView {

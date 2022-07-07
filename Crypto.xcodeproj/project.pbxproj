@@ -38,7 +38,6 @@
 		BCB845B528645760001B6ACA /* CoinImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB845B428645760001B6ACA /* CoinImageViewModel.swift */; };
 		BCB845B72865F64A001B6ACA /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB845B62865F64A001B6ACA /* LocalFileManager.swift */; };
 		BCCA6CE9285B0D4A0033D37C /* CryptoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA6CE8285B0D4A0033D37C /* CryptoApp.swift */; };
-		BCCA6CEB285B0D4A0033D37C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA6CEA285B0D4A0033D37C /* ContentView.swift */; };
 		BCCA6CF0285B0D4E0033D37C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCCA6CEF285B0D4E0033D37C /* Preview Assets.xcassets */; };
 		BCCA6CF7285B0E930033D37C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCCA6CF6285B0E930033D37C /* Assets.xcassets */; };
 		BCCA6CFA285B2C140033D37C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCA6CF9285B2C140033D37C /* Color.swift */; };
@@ -85,7 +84,6 @@
 		BCB845B62865F64A001B6ACA /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		BCCA6CE5285B0D4A0033D37C /* Crypto tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crypto tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCA6CE8285B0D4A0033D37C /* CryptoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoApp.swift; sourceTree = "<group>"; };
-		BCCA6CEA285B0D4A0033D37C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BCCA6CEF285B0D4E0033D37C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BCCA6CF6285B0E930033D37C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../../Downloads/Resources/Assets.xcassets; sourceTree = "<group>"; };
 		BCCA6CF9285B2C140033D37C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -227,7 +225,6 @@
 				BC056DC92872EB4700FA255D /* Detail */,
 				BCCA6CF8285B2BF00033D37C /* Extensions */,
 				BCCA6CE8285B0D4A0033D37C /* CryptoApp.swift */,
-				BCCA6CEA285B0D4A0033D37C /* ContentView.swift */,
 				BCCA6CF6285B0E930033D37C /* Assets.xcassets */,
 				BCCA6CEE285B0D4E0033D37C /* Preview Content */,
 			);
@@ -404,7 +401,6 @@
 				BC4BBE1D2874316300A22C2F /* ChartView.swift in Sources */,
 				BCF0C360285CB41000DD4A6E /* CoinRowView.swift in Sources */,
 				BCABE127286068D90071BC48 /* HomeViewModel.swift in Sources */,
-				BCCA6CEB285B0D4A0033D37C /* ContentView.swift in Sources */,
 				BC4BBE1F2874382800A22C2F /* Date.swift in Sources */,
 				BCB845B72865F64A001B6ACA /* LocalFileManager.swift in Sources */,
 				BCAA8819286AFDDB00B07DF9 /* MarketDataModel.swift in Sources */,
@@ -572,10 +568,11 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -604,10 +601,11 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -28,8 +28,6 @@ struct LaunchView: View {
             
             ZStack {
                 if showLoading {
-//                    Text(loadingText)
-
                     HStack (spacing: 0) {
                         ForEach(loadingText.indices, id: \.self) { index in
                             Text(loadingText[index])
