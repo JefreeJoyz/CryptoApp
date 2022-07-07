@@ -26,7 +26,7 @@ Used core data.
 
 **Support dark more**
 
-![Simulator Screen Shot - iPhone 1-2](https://user-images.githubusercontent.com/41231933/177785664-79ac596c-9649-4521-9c3a-4554f5a875d3.png)
+![Simulator Screen Shot - iPhone 1-7](https://user-images.githubusercontent.com/41231933/177787584-a1211698-fe72-4ab7-bc3e-15a9a39ce650.png)
 
 **Ipad adaptive**
 
