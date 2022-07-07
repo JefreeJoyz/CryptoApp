@@ -17,7 +17,7 @@ struct CryptoApp: App {
     init () {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor : UIColor(Color.theme.accent)]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.theme.accent)]
-
+        UITableView.appearance().backgroundColor = UIColor.clear // красим бекграунд, который под листом. Его видно, если двигать лист вверх/вниз
     }
     
     /*

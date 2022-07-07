@@ -18,25 +18,32 @@ struct SettingsView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                basicInfo
-                coinGeckoSection
-                developerSection
-            }
-            .tint(.blue)
-            .font(.headline)
-            .listStyle(.grouped)
-            .navigationTitle("Settings")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    //XmarkButton()  по хорошему, здесь должна быть только эта строчка. Мы создали отдельный компонент, который хотим переиспользовать и на других экранах. Но в xcode Version 13.4.1 (13F100) вьюха отображается, но не отрабатывает закрытие sheet.
-                    Button {
-                        presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .font(.headline)
-                    }
+            ZStack {
+                Color.theme.background.ignoresSafeArea()
+                List {
+                    basicInfo
+                        .listRowBackground(Color.theme.background.opacity(0.5))
+                    coinGeckoSection
+                        .listRowBackground(Color.theme.background.opacity(0.5))
+                    developerSection
+                        .listRowBackground(Color.theme.background.opacity(0.5))
                 }
+                
+                .tint(.blue)
+                .font(.headline)
+                .listStyle(.grouped)
+                .navigationTitle("Settings")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        //XmarkButton()  по хорошему, здесь должна быть только эта строчка. Мы создали отдельный компонент, который хотим переиспользовать и на других экранах. Но в xcode Version 13.4.1 (13F100) вьюха отображается, но не отрабатывает закрытие sheet.
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Image(systemName: "xmark")
+                                .font(.headline)
+                        }
+                    }
+            }
             }
         }
     }
